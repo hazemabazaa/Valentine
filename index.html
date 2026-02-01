@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Valentine 💖</title>
+
   <style>
     body {
       margin: 0;
@@ -48,11 +49,10 @@
     }
 
     .heart {
-      position: absolute;
+      position: fixed;
       bottom: -20px;
       color: rgba(255, 0, 80, 0.8);
-      font-size: 20px;
-      animation: floatUp linear infinite;
+      animation: floatUp linear forwards;
     }
 
     @keyframes floatUp {
@@ -67,8 +67,10 @@
     }
   </style>
 </head>
+
 <body>
 
+  <!-- الصفحة الأولى -->
   <div class="container">
     <h1>Nada 💖<br>Will you be my Valentine?</h1>
     <button onclick="yes()">Yes</button>
@@ -76,69 +78,53 @@
   </div>
 
   <script>
-    <script>
-  function yes() {
-    document.body.innerHTML = `
-      <div id="loveScreen" style="
-        height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: Arial, sans-serif;
-        overflow:hidden;
-      ">
-        <h1 style="color:white;font-size:42px;line-height:1.4;">
-          💕 Happy Valentine’s Day ya ro7yyy 💕<br><br>
-          Lovee youu 😘
-        </h1>
+    function yes() {
+      // شاشة الحب
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          text-align:center;
+          background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+          font-family: Arial, sans-serif;
+          overflow:hidden;
+        ">
+          <h1 style="color:white;font-size:42px;line-height:1.4;">
+            💕 Happy Valentine’s Day ya ro7yyy 💕<br><br>
+            Lovee youu 😘
+          </h1>
 
-        <p style="margin-top:20px;color:white;font-size:22px;">
-          — your love Hazem 💖
-        </p>
-      </div>
-    `;
+          <p style="margin-top:20px;color:white;font-size:22px;">
+            — your love Hazem 💖
+          </p>
+        </div>
+      `;
 
-    // صوت kiss 😘
-    const audio = new Audio(
-      "https://www.soundjay.com/human/kiss-1.mp3"
-    );
-    audio.play();
+      // صوت kiss 😘
+      const audio = new Audio("https://www.soundjay.com/human/kiss-1.mp3");
+      audio.play();
 
-    // قلوب كتير قوي
-    setInterval(createHeart, 150);
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤";
-    heart.style.position = "fixed";
-    heart.style.bottom = "-20px";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (20 + Math.random() * 30) + "px";
-    heart.style.color = "rgba(255,0,80,0.8)";
-    heart.style.animation = "floatUp 5s linear";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }
-
-  const style = document.createElement("style");
-  style.innerHTML = `
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-      }
+      // قلوب كتير قوي 💘
+      setInterval(createHeart, 120);
     }
-  `;
-  document.head.appendChild(style);
-</script>
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (20 + Math.random() * 30) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 2) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  </script>
+
+</body>
+</html>
